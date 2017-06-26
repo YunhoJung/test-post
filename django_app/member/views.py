@@ -18,8 +18,14 @@ from django.shortcuts import render, redirect
 #         else:
 #             return HttpResponse('Login credentials invalid')
 #     else:
+#         if request.user.is_authenticated:
+#             return redirect('post:post_list')
 #         return render(request, 'login.html')
-
+#
+#
+# def logout(request):
+#     django_logout(request)
+#     return redirect('post:post_list')
 
 def login(request):
     if request.method == "POST":
@@ -38,7 +44,13 @@ def login(request):
     else:
         if request.user.is_authenticated:
             return redirect('post:post_list')
-        return render(request, 'login.html')
+        else:
+            return render(request, 'login.html')
+
+
+def logout(request):
+    django_logout()
+    return redirect('post:post_list')
 
 
 def logout(request):

@@ -1,5 +1,15 @@
 {% extends 'base.html'%}
 
 {% block content %}
+    <form action="" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        {% csrf_token %}
+        {% for field in form %}
+        <p>{{field.label}}</p>
+        <p>{{field}}</p>
+        {% endfor %}
+    </div>
+    <button type="submit">수정</button>
+
 
 {% endblock %}
